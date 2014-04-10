@@ -1,0 +1,23 @@
+{
+  "namespace": "com.linkedin.camus.example.records",
+  "type": "record",
+  "name": "DummyLog",
+  "doc": "Logs for not so important stuff.",
+  "fields": [
+	    {
+			"name": "id", 
+			"type": "long",
+                        "default": 100
+		},
+	    {
+			"name": "logTime", 
+			"type": "long",
+                        "default": 20140826
+		},
+		{
+			"name": "muchoStuff", 
+			"type": {"type": "map", "values": "string"},
+                        "default": {"aho": "baka"}
+		}
+	]
+}
