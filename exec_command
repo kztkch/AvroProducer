@@ -1,0 +1,4 @@
+#!/bin/sh
+set -x
+
+mvn exec:java -Dexec.mainClass="com.example.AvroProducer" -Dexec.classpathScope="runtime" -Dexec.args=" $1"
