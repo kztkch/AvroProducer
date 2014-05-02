@@ -25,19 +25,20 @@ public class AvroProducer {
 	public static void main(String[] args) throws Exception { 
 		Schema schema = new Parser().parse(new File("./src/main/avro/DummyLog.avsc")); 
 
-		//Using this schema, let's create some users. 
 		AvroProducer sp = new AvroProducer(); 
 		String topic = args[0];
 
 		GenericRecord user1 = new GenericData.Record(schema); 
-		user1.put("id", 100); 
-		user1.put("logTime", 500); 
-
-		KeyedMessage<Integer, String> data = new KeyedMessage<Integer, String> (topic, user1.toString()); 
 		int i=0; 
-		while (i<100) { 
-			producer.send(data); i++; 
+		while (i<10) { 
+		        user1.put("id", 100 + i); 
+		        user1.put("logTime", 500 + i); 
+
+		        KeyedMessage<Integer, String> data = new KeyedMessage<Integer, String> (topic, user1.toString()); 
+			producer.send(data); 
+                        i++; 
 		} 
 		producer.close(); 
 	} 
 } 
+
